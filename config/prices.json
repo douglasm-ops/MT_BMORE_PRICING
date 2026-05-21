@@ -43,7 +43,7 @@
       "id": "standard",
       "name": "Standard Cleaning",
       "description": "Regular house cleaning",
-      "baseHourlyRate": 45,
+      "baseHourlyRate": 55,
       "minimumHours": 2,
       "features": [
         "Dusting and vacuuming",
@@ -56,7 +56,7 @@
       "id": "deep",
       "name": "Deep Cleaning",
       "description": "Comprehensive deep clean",
-      "baseHourlyRate": 55,
+      "baseHourlyRate": 65,
       "minimumHours": 3,
       "features": [
         "All standard features",
