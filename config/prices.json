@@ -1,0 +1,133 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-05-21",
+  "currency": "USD",
+  "serviceAreas": {
+    "baltimore": {
+      "name": "Baltimore City",
+      "status": "primary",
+      "description": "MaidThis service area - Baltimore Metro",
+      "zipCodes": [
+        "21201", "21202", "21203", "21204", "21205", "21206", "21207", "21208", "21209",
+        "21210", "21211", "21212", "21213", "21214", "21215", "21216", "21217", "21218",
+        "21219", "21220", "21221", "21222", "21223", "21224", "21225", "21226", "21227",
+        "21228", "21229", "21230", "21231", "21232", "21233", "21234", "21235", "21236",
+        "21237", "21239", "21240", "21241", "21242", "21243", "21244", "21245", "21250",
+        "21251", "21252", "21260", "21261", "21263", "21264", "21270", "21273", "21275",
+        "21278", "21279", "21280", "21281", "21282", "21283", "21284", "21285", "21286",
+        "21287", "21288"
+      ],
+      "basePrice": 0,
+      "markup": 1.0
+    },
+    "neighboring": {
+      "name": "Neighboring Counties",
+      "status": "secondary",
+      "description": "Howard, Anne Arundel, Baltimore County",
+      "zipCodePrefixes": ["20730", "20731", "20732", "20746", "20747", "20748", "21010"],
+      "basePrice": 25,
+      "markup": 1.15,
+      "additionalNotice": "15-25 minute drive time"
+    },
+    "other": {
+      "name": "Other Areas",
+      "status": "tertiary",
+      "description": "Outside standard service areas",
+      "basePrice": 50,
+      "markup": 1.25,
+      "additionalNotice": "Custom quote required - 25+ minute drive time"
+    }
+  },
+  "serviceTiers": {
+    "standard": {
+      "id": "standard",
+      "name": "Standard Cleaning",
+      "description": "Regular house cleaning",
+      "baseHourlyRate": 45,
+      "minimumHours": 2,
+      "features": [
+        "Dusting and vacuuming",
+        "Kitchen cleaning",
+        "Bathroom cleaning",
+        "Floor maintenance"
+      ]
+    },
+    "deep": {
+      "id": "deep",
+      "name": "Deep Cleaning",
+      "description": "Comprehensive deep clean",
+      "baseHourlyRate": 55,
+      "minimumHours": 3,
+      "features": [
+        "All standard features",
+        "Baseboards and trim",
+        "Inside appliances",
+        "Carpet shampooing",
+        "Window cleaning"
+      ]
+    },
+    "moveOut": {
+      "id": "moveOut",
+      "name": "Move-Out Cleaning",
+      "description": "Turnover cleaning for lease end",
+      "baseHourlyRate": 60,
+      "minimumHours": 4,
+      "features": [
+        "All deep clean features",
+        "Wall washing",
+        "Carpet extraction",
+        "Final walkthrough"
+      ]
+    }
+  },
+  "addOns": {
+    "windowCleaning": {
+      "name": "Window Cleaning",
+      "price": 35,
+      "unit": "set"
+    },
+    "blindsCleaning": {
+      "name": "Blinds Cleaning",
+      "price": 25,
+      "unit": "room"
+    },
+    "carpetShampoo": {
+      "name": "Carpet Shampooing",
+      "price": 15,
+      "unit": "room"
+    },
+    "groutCleaning": {
+      "name": "Grout Cleaning",
+      "price": 50,
+      "unit": "bathroom"
+    },
+    "ovenCleaning": {
+      "name": "Oven Cleaning",
+      "price": 40,
+      "unit": "item"
+    }
+  },
+  "discounts": {
+    "recurring": {
+      "name": "Recurring Service",
+      "description": "Discount for recurring weekly/biweekly service",
+      "percentOff": 10
+    },
+    "referral": {
+      "name": "Referral Discount",
+      "description": "Discount when new customer is referred",
+      "percentOff": 15
+    },
+    "firstTime": {
+      "name": "First Time Customer",
+      "description": "Discount for first service",
+      "percentOff": 10,
+      "maxUses": 1
+    }
+  },
+  "notes": {
+    "setupFee": "Initial setup consultation may apply for custom requirements",
+    "taxNote": "Prices exclude applicable sales tax",
+    "paymentTerms": "Payment due upon service completion unless other terms agreed"
+  }
+}
