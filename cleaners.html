@@ -1616,8 +1616,8 @@
   // ====================================================================
   // CONFIG, edit these if anything ever changes
   // ====================================================================
-  const API_URL = 'https://script.google.com/macros/s/AKfycbwfUL81Ro0XRaMNpz1bC6dlmA_F_V0MPiLS7Zan3wMVmFj6JQGpo175XMAQNWm9b44i3w/exec';
-  const REFRESH_MS = 5 * 60 * 1000;          // auto refresh every 5 minutes
+  // API_URL removed — using embedded HCP data
+  const REFRESH_MS = null;          // auto refresh every 5 minutes
   const COLOR_THRESHOLDS = { green: 60, yellow: 85 };  // green under 60, yellow 60 to 85, red above
 
   // Map cleaner display names to their existing avatar CSS class.
@@ -1651,7 +1651,7 @@
     bindSearch();
     document.getElementById('refreshBtn').addEventListener('click', () => loadData(true));
     loadData();
-    setInterval(() => loadData(false), REFRESH_MS);
+    // auto-refresh disabled (static data)
   });
 
   function initRevealObserver() {
@@ -1711,31 +1711,1633 @@
   // ====================================================================
   // DATA LOAD
   // ====================================================================
+  // =====================================================================
+  // STATIC ROSTER DATA — populated from HCP (updated by Viktor May 21, 2026 at 1:08 AM)
+  // =====================================================================
+  const STATIC_ROSTER = {
+  "lastUpdated": "May 21, 2026 at 1:08 AM",
+  "lastUpdatedISO": "2026-05-21T01:08:42.275222Z",
+  "weekStart": "May 18, 2026",
+  "weekEnd": "May 24, 2026",
+  "weekRange": "May 18 to May 24, 2026",
+  "cleaners": [
+    {
+      "id": "C001",
+      "name": "Alva Rivera",
+      "status": "Active",
+      "defaultDays": {
+        "mon": false,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": false,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 21.4,
+        "hoursAvailable": 40.0,
+        "percent": 53,
+        "openHoursLeft": 18.6,
+        "bookingsCount": 10
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Tom",
+          "startTime": "12:30pm",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Alva Rivera"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Brian",
+          "startTime": "8:30am",
+          "duration": "2.5h",
+          "serviceType": "",
+          "assignedTeam": "Alva Rivera"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Laurel",
+          "startTime": "10:00am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Alva Rivera"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Jocelyn",
+          "startTime": "12:00pm",
+          "duration": "3.5h",
+          "serviceType": "",
+          "assignedTeam": "Alva Rivera"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Vanessa",
+          "startTime": "10:30am",
+          "duration": "1.0h",
+          "serviceType": "",
+          "assignedTeam": "Alva Rivera"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Katie",
+          "startTime": "1:00pm",
+          "duration": "3.2h",
+          "serviceType": "",
+          "assignedTeam": "Alva Rivera"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Amanda",
+          "startTime": "8:30am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Alva Rivera"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Teresa",
+          "startTime": "11:00am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Alva Rivera"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Jen",
+          "startTime": "2:00pm",
+          "duration": "3.2h",
+          "serviceType": "",
+          "assignedTeam": "Alva Rivera"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Kris",
+          "startTime": "8:30am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Alva Rivera"
+        }
+      ]
+    },
+    {
+      "id": "C002",
+      "name": "Carmelina Seven",
+      "status": "Active",
+      "defaultDays": {
+        "mon": false,
+        "tue": true,
+        "wed": true,
+        "thu": false,
+        "fri": true,
+        "sat": false,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 9.0,
+        "hoursAvailable": 40.0,
+        "percent": 22,
+        "openHoursLeft": 31.0,
+        "bookingsCount": 3
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Beth",
+          "startTime": "5:00pm",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Carmelina Seven"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Ayo",
+          "startTime": "7:00am",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Carmelina Seven"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Beth",
+          "startTime": "6:45pm",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Carmelina Seven"
+        }
+      ]
+    },
+    {
+      "id": "C003",
+      "name": "Debora Taylor",
+      "status": "Active",
+      "defaultDays": {
+        "mon": true,
+        "tue": false,
+        "wed": false,
+        "thu": false,
+        "fri": true,
+        "sat": true,
+        "sun": true
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 26.0,
+        "hoursAvailable": 40.0,
+        "percent": 65,
+        "openHoursLeft": 14.0,
+        "bookingsCount": 6
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Ryan",
+          "startTime": "6:00pm",
+          "duration": "1.0h",
+          "serviceType": "",
+          "assignedTeam": "Debora Taylor"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Ayo",
+          "startTime": "8:00pm",
+          "duration": "4.0h",
+          "serviceType": "",
+          "assignedTeam": "Debora Taylor"
+        },
+        {
+          "date": "May 23",
+          "dayOfWeek": "Sat",
+          "clientFirstName": "Benedicta",
+          "startTime": "10:00am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Debora Taylor"
+        },
+        {
+          "date": "May 23",
+          "dayOfWeek": "Sat",
+          "clientFirstName": "Ayo",
+          "startTime": "4:00pm",
+          "duration": "8.0h",
+          "serviceType": "",
+          "assignedTeam": "Debora Taylor"
+        },
+        {
+          "date": "May 23",
+          "dayOfWeek": "Sat",
+          "clientFirstName": "Ayo",
+          "startTime": "6:45am",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Debora Taylor"
+        },
+        {
+          "date": "May 24",
+          "dayOfWeek": "Sun",
+          "clientFirstName": "Ayo",
+          "startTime": "4:00pm",
+          "duration": "8.0h",
+          "serviceType": "",
+          "assignedTeam": "Debora Taylor"
+        }
+      ]
+    },
+    {
+      "id": "C004",
+      "name": "Jasmin Guevara",
+      "status": "Active",
+      "defaultDays": {
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": false,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 29.9,
+        "hoursAvailable": 40.0,
+        "percent": 75,
+        "openHoursLeft": 10.1,
+        "bookingsCount": 16
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Christine",
+          "startTime": "1:15pm",
+          "duration": "1.8h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Taylor",
+          "startTime": "8:30am",
+          "duration": "4.0h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Maria",
+          "startTime": "10:15am",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Danielle",
+          "startTime": "11:45am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Steven",
+          "startTime": "1:30pm",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Eerik",
+          "startTime": "8:30am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Abby",
+          "startTime": "2:00pm",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Jessica",
+          "startTime": "8:30am",
+          "duration": "4.0h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Ashley",
+          "startTime": "11:00am",
+          "duration": "2.2h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Janet",
+          "startTime": "2:15pm",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Michael Shawrtz Dentis Office",
+          "startTime": "4:00pm",
+          "duration": "1.0h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Michael",
+          "startTime": "8:30am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Tye and Jamie",
+          "startTime": "10:30am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Brian",
+          "startTime": "12:30pm",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Paintech",
+          "startTime": "2:45pm",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Greg",
+          "startTime": "8:30am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jasmin Guevara"
+        }
+      ]
+    },
+    {
+      "id": "C005",
+      "name": "Jordan Ingrid",
+      "status": "Active",
+      "defaultDays": {
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": false,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 30.4,
+        "hoursAvailable": 40.0,
+        "percent": 76,
+        "openHoursLeft": 9.6,
+        "bookingsCount": 20
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Samantha",
+          "startTime": "10:15am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Sasha",
+          "startTime": "12:45pm",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Alexis",
+          "startTime": "2:15pm",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Thomas",
+          "startTime": "3:45pm",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Robyn",
+          "startTime": "8:30am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Veronica",
+          "startTime": "10:00am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Valerie",
+          "startTime": "12:00pm",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Vanessa",
+          "startTime": "1:45pm",
+          "duration": "1.0h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Georgiann",
+          "startTime": "8:30am",
+          "duration": "1.0h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Adele",
+          "startTime": "10:45am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Anna",
+          "startTime": "12:30pm",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Samantha",
+          "startTime": "8:30am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Patricia",
+          "startTime": "10:45am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Julie",
+          "startTime": "1:00pm",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Lauren",
+          "startTime": "8:30am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Samantha",
+          "startTime": "11:30am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Crystal",
+          "startTime": "1:30pm",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Amanda",
+          "startTime": "7:00am",
+          "duration": "1.0h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Don",
+          "startTime": "8:15am",
+          "duration": "1.0h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Hamidah",
+          "startTime": "9:30am",
+          "duration": "1.8h",
+          "serviceType": "",
+          "assignedTeam": "Jordan Ingrid"
+        }
+      ]
+    },
+    {
+      "id": "C006",
+      "name": "Katherine Jacinto Rodriguez",
+      "status": "Active",
+      "defaultDays": {
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": true,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 34.6,
+        "hoursAvailable": 40.0,
+        "percent": 86,
+        "openHoursLeft": 5.4,
+        "bookingsCount": 17
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Jack",
+          "startTime": "10:30am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Pearce",
+          "startTime": "1:00pm",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Nicholas",
+          "startTime": "8:30am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Brooke",
+          "startTime": "12:15pm",
+          "duration": "4.5h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Jamie",
+          "startTime": "8:30am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Shannon",
+          "startTime": "12:00pm",
+          "duration": "1.0h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Sagar",
+          "startTime": "1:15pm",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Ayo",
+          "startTime": "7:00am",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Wayne",
+          "startTime": "11:15am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "JH",
+          "startTime": "1:30pm",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Stephen",
+          "startTime": "3:15pm",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Caleb Charles",
+          "startTime": "8:30am",
+          "duration": "2.5h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Latricia",
+          "startTime": "10:45am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Cassandra",
+          "startTime": "12:45pm",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Darlene",
+          "startTime": "8:30am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 23",
+          "dayOfWeek": "Sat",
+          "clientFirstName": "May",
+          "startTime": "10:30am",
+          "duration": "2.2h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        },
+        {
+          "date": "May 23",
+          "dayOfWeek": "Sat",
+          "clientFirstName": "Tori",
+          "startTime": "8:30am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Katherine Jacinto Rodriguez"
+        }
+      ]
+    },
+    {
+      "id": "C007",
+      "name": "Kathy Ayala",
+      "status": "Active",
+      "defaultDays": {
+        "mon": false,
+        "tue": false,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": false,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 11.0,
+        "hoursAvailable": 40.0,
+        "percent": 28,
+        "openHoursLeft": 29.0,
+        "bookingsCount": 3
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Rema",
+          "startTime": "8:30am",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Kathy Ayala"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Amanda",
+          "startTime": "12:00pm",
+          "duration": "5.0h",
+          "serviceType": "",
+          "assignedTeam": "Kathy Ayala"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Jonathan",
+          "startTime": "7:00am",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Kathy Ayala"
+        }
+      ]
+    },
+    {
+      "id": "C008",
+      "name": "Leslin Ramirez",
+      "status": "Active",
+      "defaultDays": {
+        "mon": false,
+        "tue": true,
+        "wed": false,
+        "thu": true,
+        "fri": false,
+        "sat": true,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 9.8,
+        "hoursAvailable": 40.0,
+        "percent": 25,
+        "openHoursLeft": 30.2,
+        "bookingsCount": 5
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Jonathan",
+          "startTime": "11:45am",
+          "duration": "1.3h",
+          "serviceType": "",
+          "assignedTeam": "Leslin Ramirez"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Amar",
+          "startTime": "9:45am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Leslin Ramirez"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Charlene",
+          "startTime": "10:30am",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Leslin Ramirez"
+        },
+        {
+          "date": "May 23",
+          "dayOfWeek": "Sat",
+          "clientFirstName": "Leslie",
+          "startTime": "10:45am",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Leslin Ramirez"
+        },
+        {
+          "date": "May 23",
+          "dayOfWeek": "Sat",
+          "clientFirstName": "Oj",
+          "startTime": "9:00am",
+          "duration": "1.0h",
+          "serviceType": "",
+          "assignedTeam": "Leslin Ramirez"
+        }
+      ]
+    },
+    {
+      "id": "C009",
+      "name": "Maria Cazares",
+      "status": "Active",
+      "defaultDays": {
+        "mon": true,
+        "tue": false,
+        "wed": true,
+        "thu": false,
+        "fri": true,
+        "sat": true,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 4.8,
+        "hoursAvailable": 40.0,
+        "percent": 12,
+        "openHoursLeft": 35.2,
+        "bookingsCount": 4
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Amar",
+          "startTime": "6:45am",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Maria Cazares"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Amar",
+          "startTime": "6:45am",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Maria Cazares"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Amar",
+          "startTime": "6:45am",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Maria Cazares"
+        },
+        {
+          "date": "May 23",
+          "dayOfWeek": "Sat",
+          "clientFirstName": "Amar",
+          "startTime": "6:45am",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Maria Cazares"
+        }
+      ]
+    },
+    {
+      "id": "C010",
+      "name": "Mary Macias",
+      "status": "Active",
+      "defaultDays": {
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": false,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 31.4,
+        "hoursAvailable": 40.0,
+        "percent": 78,
+        "openHoursLeft": 8.6,
+        "bookingsCount": 16
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Christine",
+          "startTime": "1:15pm",
+          "duration": "1.8h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Taylor",
+          "startTime": "8:30am",
+          "duration": "4.0h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Maria",
+          "startTime": "10:15am",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Danielle",
+          "startTime": "11:45am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Steven",
+          "startTime": "1:30pm",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Beth",
+          "startTime": "5:00pm",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Eerik",
+          "startTime": "8:30am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Abby",
+          "startTime": "2:00pm",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Jessica",
+          "startTime": "8:30am",
+          "duration": "4.0h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Ashley",
+          "startTime": "11:00am",
+          "duration": "2.2h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Janet",
+          "startTime": "2:15pm",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Michael Shawrtz Dentis Office",
+          "startTime": "4:00pm",
+          "duration": "1.0h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Michael",
+          "startTime": "8:30am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Tye and Jamie",
+          "startTime": "10:30am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Paintech",
+          "startTime": "2:45pm",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Greg",
+          "startTime": "8:30am",
+          "duration": "1.5h",
+          "serviceType": "",
+          "assignedTeam": "Mary Macias"
+        }
+      ]
+    },
+    {
+      "id": "C011",
+      "name": "Valesca Aguirre",
+      "status": "Active",
+      "defaultDays": {
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": true,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 34.9,
+        "hoursAvailable": 40.0,
+        "percent": 87,
+        "openHoursLeft": 5.1,
+        "bookingsCount": 15
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Chanel McCrea",
+          "startTime": "1:00pm",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Phil",
+          "startTime": "3:30pm",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Jenn",
+          "startTime": "8:30am",
+          "duration": "4.0h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Judson",
+          "startTime": "12:15pm",
+          "duration": "2.5h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Dante",
+          "startTime": "8:30am",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Kyle",
+          "startTime": "8:30am",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Philip",
+          "startTime": "12:15pm",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Brigid McDonnell",
+          "startTime": "8:30am",
+          "duration": "3.0h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Christie",
+          "startTime": "10:30am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Micheal",
+          "startTime": "1:00pm",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Doris",
+          "startTime": "3:30pm",
+          "duration": "1.2h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Tom",
+          "startTime": "8:30am",
+          "duration": "1.0h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 23",
+          "dayOfWeek": "Sat",
+          "clientFirstName": "Lori",
+          "startTime": "10:15am",
+          "duration": "2.2h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 23",
+          "dayOfWeek": "Sat",
+          "clientFirstName": "Tonya",
+          "startTime": "1:00pm",
+          "duration": "4.0h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        },
+        {
+          "date": "May 23",
+          "dayOfWeek": "Sat",
+          "clientFirstName": "Jaleesa Washington",
+          "startTime": "8:30am",
+          "duration": "1.0h",
+          "serviceType": "",
+          "assignedTeam": "Valesca Aguirre"
+        }
+      ]
+    },
+    {
+      "id": "C012",
+      "name": "Wendy Carolina Menjivar",
+      "status": "Active",
+      "defaultDays": {
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": false,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 20.0,
+        "hoursAvailable": 40.0,
+        "percent": 50,
+        "openHoursLeft": 20.0,
+        "bookingsCount": 5
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Kelly",
+          "startTime": "6:00pm",
+          "duration": "4.0h",
+          "serviceType": "",
+          "assignedTeam": "Wendy Carolina Menjivar"
+        },
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Kelly",
+          "startTime": "6:00pm",
+          "duration": "4.0h",
+          "serviceType": "",
+          "assignedTeam": "Wendy Carolina Menjivar"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Kelly",
+          "startTime": "6:00pm",
+          "duration": "4.0h",
+          "serviceType": "",
+          "assignedTeam": "Wendy Carolina Menjivar"
+        },
+        {
+          "date": "May 21",
+          "dayOfWeek": "Thu",
+          "clientFirstName": "Kelly",
+          "startTime": "6:00pm",
+          "duration": "4.0h",
+          "serviceType": "",
+          "assignedTeam": "Wendy Carolina Menjivar"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Kelly",
+          "startTime": "6:00pm",
+          "duration": "4.0h",
+          "serviceType": "",
+          "assignedTeam": "Wendy Carolina Menjivar"
+        }
+      ]
+    },
+    {
+      "id": "C013",
+      "name": "Yolonda McCoy",
+      "status": "Active",
+      "defaultDays": {
+        "mon": true,
+        "tue": false,
+        "wed": true,
+        "thu": false,
+        "fri": true,
+        "sat": false,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 6.0,
+        "hoursAvailable": 40.0,
+        "percent": 15,
+        "openHoursLeft": 34.0,
+        "bookingsCount": 3
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 18",
+          "dayOfWeek": "Mon",
+          "clientFirstName": "Zakia",
+          "startTime": "7:30am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Yolonda McCoy"
+        },
+        {
+          "date": "May 20",
+          "dayOfWeek": "Wed",
+          "clientFirstName": "Zakia",
+          "startTime": "7:30am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Yolonda McCoy"
+        },
+        {
+          "date": "May 22",
+          "dayOfWeek": "Fri",
+          "clientFirstName": "Zakia",
+          "startTime": "7:30am",
+          "duration": "2.0h",
+          "serviceType": "",
+          "assignedTeam": "Yolonda McCoy"
+        }
+      ]
+    },
+    {
+      "id": "C014",
+      "name": "Yuri Muñoz",
+      "status": "Active",
+      "defaultDays": {
+        "mon": false,
+        "tue": true,
+        "wed": false,
+        "thu": false,
+        "fri": false,
+        "sat": false,
+        "sun": false
+      },
+      "hoursStart": "8:00am",
+      "hoursEnd": "5:00pm",
+      "maxHoursPerDay": 8.0,
+      "notes": "",
+      "tags": [
+        "Active this week"
+      ],
+      "utilization": {
+        "hoursBooked": 5.0,
+        "hoursAvailable": 40.0,
+        "percent": 12,
+        "openHoursLeft": 35.0,
+        "bookingsCount": 1
+      },
+      "leaveStatus": "available",
+      "isOnLeave": false,
+      "currentLeave": null,
+      "upcomingLeave": [],
+      "thisWeekBookings": [
+        {
+          "date": "May 19",
+          "dayOfWeek": "Tue",
+          "clientFirstName": "Jonathan",
+          "startTime": "7:00am",
+          "duration": "5.0h",
+          "serviceType": "",
+          "assignedTeam": "Yuri Muñoz"
+        }
+      ]
+    }
+  ],
+  "teamTotal": {
+    "hoursBooked": 274.2,
+    "hoursAvailable": 560.0,
+    "percent": 49,
+    "openHoursLeft": 285.8,
+    "bookingsCount": 124
+  },
+  "upcomingLeaveAlerts": []
+};
+
   async function loadData(forceFresh) {
     const btn = document.getElementById('refreshBtn');
-    if (btn) {
-      btn.disabled = true;
-      btn.textContent = 'Refreshing';
-    }
+    if (btn) { btn.disabled = true; btn.textContent = 'Loading'; }
     try {
-      const url = forceFresh ? API_URL + '?t=' + Date.now() : API_URL;
-      const res = await fetch(url, { method: 'GET', mode: 'cors' });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
-      state.data = data;
+      state.data = STATIC_ROSTER;
       clearError();
       renderHeroMeta();
       renderStats();
       renderLeaveAlert();
       renderCleaners();
     } catch (err) {
-      showError(err.message || 'Could not reach the sync API.');
+      showError(err.message || 'Could not load roster data.');
     } finally {
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = 'Refresh now';
-      }
+      if (btn) { btn.disabled = false; btn.textContent = 'Refreshed'; }
     }
   }
 
