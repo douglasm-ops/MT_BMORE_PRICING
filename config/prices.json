@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "lastUpdated": "2026-05-21",
   "currency": "USD",
   "serviceAreas": {
@@ -78,6 +78,88 @@
         "Carpet extraction",
         "Final walkthrough"
       ]
+    },
+    "squareFootage": {
+      "id": "squareFootage",
+      "name": "Square Footage Pricing",
+      "description": "Pricing based on home square footage (productivity model)",
+      "pricingModel": "productivity",
+      "laborRate": 65,
+      "productivity": {
+        "rate": 250,
+        "unit": "sf/hr",
+        "description": "250 square feet per labor-hour"
+      },
+      "rounding": "ceiling",
+      "roundingDescription": "Labor hours rounded up to nearest whole hour",
+      "pricingTable": [
+        {
+          "squareFeet": 1000,
+          "laborHours": 4,
+          "ratePerHour": 65,
+          "totalCost": 260.00
+        },
+        {
+          "squareFeet": 1250,
+          "laborHours": 5,
+          "ratePerHour": 65,
+          "totalCost": 325.00
+        },
+        {
+          "squareFeet": 1500,
+          "laborHours": 6,
+          "ratePerHour": 65,
+          "totalCost": 390.00
+        },
+        {
+          "squareFeet": 1750,
+          "laborHours": 7,
+          "ratePerHour": 65,
+          "totalCost": 455.00
+        },
+        {
+          "squareFeet": 2000,
+          "laborHours": 8,
+          "ratePerHour": 65,
+          "totalCost": 520.00
+        },
+        {
+          "squareFeet": 2250,
+          "laborHours": 9,
+          "ratePerHour": 65,
+          "totalCost": 585.00
+        },
+        {
+          "squareFeet": 2500,
+          "laborHours": 10,
+          "ratePerHour": 65,
+          "totalCost": 650.00
+        },
+        {
+          "squareFeet": 2750,
+          "laborHours": 11,
+          "ratePerHour": 65,
+          "totalCost": 715.00
+        },
+        {
+          "squareFeet": 3000,
+          "laborHours": 12,
+          "ratePerHour": 65,
+          "totalCost": 780.00
+        },
+        {
+          "squareFeet": 3250,
+          "laborHours": 13,
+          "ratePerHour": 65,
+          "totalCost": 845.00
+        },
+        {
+          "squareFeet": 3500,
+          "laborHours": 14,
+          "ratePerHour": 65,
+          "totalCost": 910.00
+        }
+      ]
     }
   },
   "addOns": {
@@ -128,6 +210,7 @@
   "notes": {
     "setupFee": "Initial setup consultation may apply for custom requirements",
     "taxNote": "Prices exclude applicable sales tax",
-    "paymentTerms": "Payment due upon service completion unless other terms agreed"
+    "paymentTerms": "Payment due upon service completion unless other terms agreed",
+    "squareFootageNote": "Square footage pricing based on 250 sf/hr productivity with labor hours rounded up to nearest whole hour at $65/hr"
   }
 }
