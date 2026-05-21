@@ -2593,7 +2593,7 @@
         <div class="discovery-header-right">
           <span class="discovery-progress" id="discoveryProgress">
             <span class="discovery-progress-dot"></span>
-            <span id="discoveryProgressText">0 of 5</span>
+            <span id="discoveryProgressText">0 of 7</span>
           </span>
           <span class="discovery-arrow">
             <span class="discovery-arrow-text">Open</span>
@@ -2691,6 +2691,19 @@
               </div>
               <textarea class="discovery-q-notes" data-field="size" placeholder="Example. 3 bed, 2 bath, around 1800 sq ft, single story." rows="1"></textarea>
             </div>
+
+            <div class="discovery-q" data-q="ownrent">
+              <div class="discovery-q-row" onclick="toggleDiscoveryQ(this)">
+                <div class="discovery-q-checkbox"></div>
+                <div class="discovery-q-content">
+                  <div class="discovery-q-text">
+                    <span class="discovery-q-num">07</span>Do you own or rent?
+                  </div>
+                  <span class="discovery-q-why"><strong>Why ask.</strong> Renters on a lease end are your best move-out leads — ask directly when they move out and quote it now. Owners on a recurring plan stick longer and refer more. Either way it signals their relationship to the space and how much they care about a thorough job versus a quick pass.</span>
+                </div>
+              </div>
+              <textarea class="discovery-q-notes" data-field="ownrent" placeholder="Example. Renter, lease ends July 31st, needs move-out clean before then." rows="1"></textarea>
+            </div>
           </div>
 
           <div class="discovery-actions">
@@ -2717,7 +2730,7 @@
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <span id="discoveryToastText">Notes copied. Paste into Launch27 booking notes.</span>
+      <span id="discoveryToastText">Notes copied. Paste into GHL contact notes.</span>
     </div>
 
     <div class="calc animate d2">
@@ -3430,9 +3443,9 @@
           <div class="rebuttal-step">
             <div class="rebuttal-step-num teal">2</div>
             <div class="rebuttal-step-content">
-              <h4>Offer the one-time new client discount: $15 off.</h4>
+              <h4>Offer the one-time new client discount: $25 off.</h4>
               <p>Only pull this out after you've defended value. Don't lead with it or it trains them to always push back on price. Frame it as something you're doing for them specifically, not a standard promo.</p>
-              <div class="rebuttal-script">"What I can do for a first-time client is take $15 off the first clean. That brings you to <strong>[adjusted price]</strong> to see how it goes. If you love it, we set you up on a recurring plan at the discounted rate going forward."</div>
+              <div class="rebuttal-script">"What I can do for a first-time client is take $25 off the first clean. That brings you to <strong>[adjusted price]</strong> to see how it goes. If you love it, we set you up on a recurring plan at the discounted rate going forward."</div>
             </div>
           </div>
           <div class="rebuttal-step">
@@ -3660,7 +3673,7 @@
   const EXTRA_HOUR_RATE = 40;
 
   const pricing = [
-    { sqft: 800, bedbath: 'Studio or compact 1BR/1BA (condo/apt)', hours: 2.0, deep: 180, monthly: 144, biweekly: 126, weekly: 97, onetime: 160 },
+    { sqft: 800, bedbath: 'Studio or compact 1BR/1BA (condo/apt)', hours: 2.0, deep: 180, monthly: 144, biweekly: 126, weekly: 108, onetime: 160 },
     { sqft: 1000, bedbath: '1BR to small 2BR / 1 to 1.5BA (starter)', hours: 2.5, deep: 207, monthly: 166, biweekly: 145, weekly: 124, onetime: 180 },
     { sqft: 1250, bedbath: '2BR / 1 to 2BA (townhome/condo)', hours: 3.0, deep: 241, monthly: 193, biweekly: 169, weekly: 145, onetime: 210 },
     { sqft: 1500, bedbath: '3BR / 2BA small single-family', hours: 3.5, deep: 275, monthly: 220, biweekly: 192, weekly: 165, onetime: 250 },
@@ -4499,6 +4512,20 @@
       numEl.style.background = 'var(--white)';
       numEl.style.color = '#0C85C2';
       textEl.innerHTML = '<span style="color: rgba(255,255,255,0.85);">Thumbtack Play</span>Thumbtack leads cost us real money and the homeowner also messaged competitors. Win this lead. Discount to close, not to rescue. Cap is 10 percent total or $50 max, whichever is lower. Never stack discounts or hand out free add-ons.<br><br><span style="color: var(--gold); font-weight: 700; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;">Auto Discount Rules</span><br>The discount on this quote calculates automatically based on add-on count and quote size. 1 add-on = up to 5 percent off. 2 add-ons = up to 8 percent. 3+ add-ons or quotes over $400 = up to 10 percent or $50, whichever is lower. The system handles the math, you frame the close.';
+    } else if (currentPlatform === 'googlelsa') {
+      banner.style.background = '#34A853';
+      banner.style.color = 'var(--white)';
+      banner.style.boxShadow = '0 8px 28px rgba(52, 168, 83, 0.25)';
+      numEl.style.background = 'var(--white)';
+      numEl.style.color = '#34A853';
+      textEl.innerHTML = '<span style="color: rgba(255,255,255,0.85);">Google LSA Play</span>This lead paid for itself. Google verified us, they clicked, and they called. They are already warm. Do not over-sell. Match their energy, answer their question quickly, then guide them to a booking. No need to over-justify price — our reviews do that for us.<br><br><span style="color: var(--gold); font-weight: 700; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;">Close Move</span><br>\"We are rated 4.9 on Google with over a hundred verified reviews from Baltimore clients. Let me pull up a time that works for you.\" Get them to a date before they hang up. LSA leads who do not book on the first call rarely come back.';
+    } else if (currentPlatform === 'phonetext') {
+      banner.style.background = '#7CCA5B';
+      banner.style.color = 'var(--navy)';
+      banner.style.boxShadow = '0 8px 28px rgba(124, 202, 91, 0.22)';
+      numEl.style.background = 'var(--navy)';
+      numEl.style.color = '#7CCA5B';
+      textEl.innerHTML = '<span>Phone / Text Play</span>Warm inbound lead — they chose to reach out. No competitor is in the room. Your only job is to not lose them. Be quick, be friendly, get to a price and a date. The biggest mistake reps make on phone and text leads is over-explaining. Give them a number, ask when they want to start.<br><br><span style="color: var(--navy); font-weight: 700; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;">Text Leads</span><br>If they texted in, respond fast. A text lead that waits more than 5 minutes is a lost lead. Match their vibe — if they texted casually, text back casually. Get them on a quick call if the job is complex.';
     } else if (currentFreq === 'moveinout') {
       banner.style.background = 'var(--navy)';
       banner.style.color = 'var(--white)';
@@ -4676,9 +4703,10 @@
       pets: 'PETS',
       lastdeep: 'LAST DEEP CLEAN',
       painpoint: 'BIGGEST PAIN POINT',
-      size: 'HOME SIZE'
+      size: 'HOME SIZE',
+      ownrent: 'OWN OR RENT'
     };
-    const order = ['source', 'occasion', 'pets', 'lastdeep', 'painpoint', 'size'];
+    const order = ['source', 'occasion', 'pets', 'lastdeep', 'painpoint', 'size', 'ownrent'];
     const today = new Date();
     const dateStr = (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear();
 
@@ -4701,7 +4729,7 @@
     const onSuccess = () => {
       btn.classList.add('success');
       btnText.textContent = 'Copied';
-      showDiscoveryToast('Notes copied. Paste into Launch27 booking notes.');
+      showDiscoveryToast('Notes copied. Paste into GHL contact notes.');
       setTimeout(() => {
         btn.classList.remove('success');
         btnText.textContent = 'Copy notes for CRM';
@@ -5123,7 +5151,7 @@
 
       <div class="closer-demo-strip">
         <div class="closer-demo-label">Live preview, what it will look like</div>
-        <div class="closer-demo-line">"Tell her the deep clean for a 3 bed 2 bath at 1800 sq ft runs <strong>$385</strong>, then anchor on her pain point about the new baby."</div>
+        <div class="closer-demo-line">"Tell her the deep clean for a 3 bed 2 bath at 1800 sq ft runs <strong>$300</strong>, then anchor on her pain point about the new baby. If she has pets, flag the $15 pet add-on."</div>
         <div class="closer-demo-attrib">Closer AI · 0.3s after she finishes speaking</div>
       </div>
 
@@ -5158,7 +5186,7 @@
               <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
-          <span><strong>Post call booking notes</strong>, auto generated and ready to paste into Launch27</span>
+          <span><strong>Post call booking notes</strong>, auto generated and ready to paste into GHL</span>
         </div>
       </div>
     </div>
